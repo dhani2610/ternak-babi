@@ -35,15 +35,44 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
 
 
-    Route::group(['prefix' => 'spip'], function () {
-        Route::get('/', 'Backend\SpipController@index')->name('spip');
-        Route::get('send-reminder/{id}', 'Backend\SpipController@sendEmail')->name('spip.mail.reminder');
-        Route::get('create', 'Backend\SpipController@create')->name('spip.create');
-        Route::post('store', 'Backend\SpipController@store')->name('spip.store');
-        Route::get('edit/{id}', 'Backend\SpipController@edit')->name('spip.edit');
-        Route::post('update/{id}', 'Backend\SpipController@update')->name('spip.update');
-        Route::get('destroy/{id}', 'Backend\SpipController@destroy')->name('spip.destroy');
+    Route::group(['prefix' => 'pakan'], function () {
+        Route::get('/', 'Backend\PakanController@index')->name('pakan');
+        Route::get('create', 'Backend\PakanController@create')->name('pakan.create');
+        Route::post('store', 'Backend\PakanController@store')->name('pakan.store');
+        Route::get('edit/{id}', 'Backend\PakanController@edit')->name('pakan.edit');
+        Route::post('update/{id}', 'Backend\PakanController@update')->name('pakan.update');
+        Route::get('destroy/{id}', 'Backend\PakanController@destroy')->name('pakan.destroy');
     });
+
+
+
+    Route::group(['prefix' => 'inventory'], function () {
+        Route::get('/', 'Backend\InventoryController@index')->name('inventory');
+        Route::get('create', 'Backend\InventoryController@create')->name('inventory.create');
+        Route::post('store', 'Backend\InventoryController@store')->name('inventory.store');
+        Route::get('edit/{id}', 'Backend\InventoryController@edit')->name('inventory.edit');
+        Route::post('update/{id}', 'Backend\InventoryController@update')->name('inventory.update');
+        Route::get('destroy/{id}', 'Backend\InventoryController@destroy')->name('inventory.destroy');
+    });
+
+    Route::group(['prefix' => 'pengeluaran-pakan'], function () {
+        Route::get('/', 'Backend\PengeluaranPakanController@index')->name('pengeluaran-pakan');
+        Route::get('create', 'Backend\PengeluaranPakanController@create')->name('pengeluaran-pakan.create');
+        Route::post('store', 'Backend\PengeluaranPakanController@store')->name('pengeluaran-pakan.store');
+        Route::get('edit/{id}', 'Backend\PengeluaranPakanController@edit')->name('pengeluaran-pakan.edit');
+        Route::post('update/{id}', 'Backend\PengeluaranPakanController@update')->name('pengeluaran-pakan.update');
+        Route::get('destroy/{id}', 'Backend\PengeluaranPakanController@destroy')->name('pengeluaran-pakan.destroy');
+    });
+
+    Route::group(['prefix' => 'mix-pakan'], function () {
+        Route::get('/', 'Backend\MixPakanController@index')->name('mix-pakan');
+        Route::get('create', 'Backend\MixPakanController@create')->name('mix-pakan.create');
+        Route::post('store', 'Backend\MixPakanController@store')->name('mix-pakan.store');
+        Route::get('edit/{id}', 'Backend\MixPakanController@edit')->name('mix-pakan.edit');
+        Route::post('update/{id}', 'Backend\MixPakanController@update')->name('mix-pakan.update');
+        Route::get('destroy/{id}', 'Backend\MixPakanController@destroy')->name('mix-pakan.destroy');
+    });
+
 
     // Login Routes
     Route::get('/login', 'Backend\Auth\LoginController@showLoginForm')->name('admin.login');
