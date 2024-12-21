@@ -94,6 +94,11 @@
                             style="color : {{ Request::routeIs('admin/pakan') ? '#3da601' : '' }}">Pakan
                         </div>
                     </a>
+                    <a href="{{ route('supplier') }}" class="menu-link">
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('admin/supplier') ? '#3da601' : '' }}">Supplier
+                        </div>
+                    </a>
                 </li>
             </ul>
         </li>

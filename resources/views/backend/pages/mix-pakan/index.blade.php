@@ -43,7 +43,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>Title</th>
-                                        <th>Total Harga</th>
+                                        {{-- <th>Total Harga</th> --}}
                                         <th>Tanggal Dibuat</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -53,7 +53,7 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <th>@currency($item->total_harga)</th>
+                                            {{-- <th>@currency($item->total_harga)</th> --}}
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <!-- Button trigger modal -->
@@ -87,8 +87,8 @@
                                                                             <tr>
                                                                                 <th>Pakan</th>
                                                                                 <th>Qty</th>
-                                                                                <th>Price</th>
-                                                                                <th>Total</th>
+                                                                                {{-- <th>Price</th>
+                                                                                <th>Total</th> --}}
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -102,18 +102,11 @@
                                                                                 <tr>
                                                                                     <td>{{ $vp->nama_pakan }}</td>
                                                                                     <td>{{ $p->qty }}</td>
-                                                                                    <td>@currency($p->price)</td>
-                                                                                    <td>@currency($p->total)</td>
+                                                                                    {{-- <td>@currency($p->price)</td>
+                                                                                    <td>@currency($p->total)</td> --}}
                                                                                 </tr>
                                                                             @endforeach
                                                                         </tbody>
-                                                                        <tfoot>
-                                                                            <tr>
-                                                                                <th colspan="3" class="text-right">Grand
-                                                                                    Total:</th>
-                                                                                <th id="grand-total">@currency($item->total_harga)</th>
-                                                                            </tr>
-                                                                        </tfoot>
                                                                     </table>
                                                                 </div>
                                                             </div>

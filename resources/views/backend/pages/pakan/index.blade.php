@@ -42,6 +42,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>Nama Pakan</th>
+                                        <th>Satuan</th>
                                         <th>Tanggal Dibuat</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -51,6 +52,7 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $item->nama_pakan }}</td>
+                                            <td>{{ $item->satuan ?? '-' }}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <a href="{{ route('pakan.edit', $item->id) }}"

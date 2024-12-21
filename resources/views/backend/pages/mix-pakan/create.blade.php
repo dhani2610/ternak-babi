@@ -55,19 +55,19 @@
                                     <tr>
                                         <th>Pakan</th>
                                         <th>Qty</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
+                                        {{-- <th>Price</th>
+                                        <th>Total</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th colspan="3" class="text-right">Grand Total:</th>
-                                        <th id="grand-total">Rp 0</th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
+                                {{-- <tfoot> --}}
+                                    {{-- <tr> --}}
+                                        <th colspan="3" class="text-right d-none">Grand Total:</th>
+                                        {{-- <th id="grand-total">Rp 0</th> --}}
+                                        {{-- <th></th> --}}
+                                    {{-- </tr> --}}
+                                {{-- </tfoot> --}}
                             </table>
                            
                             <button class="btn btn-primary mt-4" type="submit" style="float: right">Simpan Data</button>
@@ -130,9 +130,10 @@
                     const newRow = `
                         <tr data-pakan-id="${pakanId}">
                             <td>${pakanName}<input type="hidden" name="id_pakan[]" value="${pakanId}"></td>
-                            <td>${qty}<input type="hidden" name="qty[]" value="${qty}"></td>
-                            <td>${formatRupiah(price)}<input type="hidden" name="price[]" value="${price}"></td>
-                            <td>${formatRupiah(total)}<input type="hidden" name="total[]" value="${total}"></td>
+                            <td>${qty}<input type="hidden" name="qty[]" value="${qty}">
+                            <input type="hidden" name="price[]" value="${price}">
+                            <input type="hidden" name="total[]" value="${total}">
+                            </td>
                             <td><button type="button" class="btn btn-danger btn-sm delete-row">Delete</button></td>
                         </tr>
                     `;

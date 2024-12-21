@@ -6,6 +6,7 @@ use App\Models\PengeluaranPakan;
 use App\Http\Controllers\Controller;
 use App\Models\Inventory;
 use App\Models\Pakan;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,7 @@ class PengeluaranPakanController extends Controller
     {
         $data['page_title'] = 'Tambah Pengeluaran Pakan';
         $data['pakan'] = Pakan::orderBy('created_at', 'desc')->get();
+        $data['supplier'] = Supplier::orderBy('created_at', 'desc')->get();
 
         return view('backend.pages.pengeluaran.pakan.create', $data);
     }
@@ -48,7 +50,7 @@ class PengeluaranPakanController extends Controller
     public function store(Request $request)
     {
         try {
-            
+            // dd($request->all());
             $data = new PengeluaranPakan();
             $data->title = $request->title;
             $data->id_pakan = $request->id_pakan;
@@ -56,12 +58,17 @@ class PengeluaranPakanController extends Controller
             $data->price = $request->price;
             $data->tanggal_pembelian = $request->tanggal_pembelian;
             $data->tanggal_pengiriman = $request->tanggal_pengiriman;
+            $data->id_supplier = $request->id_supplier;
+
+            $cekPakan = Pakan::where('id',$request->id_pakan)->first();
+
             if ($data->save()) {
                 $cekInventory = Inventory::where('id_pakan',$request->id_pakan)->first();
                 if ($cekInventory != null) {
                     $update = Inventory::find($cekInventory->id);
                     $update->qty_now = $update->qty_now + $request->qty;
                     $update->price = $this->avgPrice($update->id_pakan);
+                    $update->satuan = $cekPakan->satuan ?? '-';
                     $update->save();
                 }else{
                     $inv = new Inventory();
@@ -69,7 +76,7 @@ class PengeluaranPakanController extends Controller
                     $inv->qty_now = $request->qty;
                     $inv->min_qty = 0;
                     $inv->price = $request->price;
-                    $inv->satuan = '-';
+                    $inv->satuan = $cekPakan->satuan ?? '-';
                     $inv->save();
                 }
             }

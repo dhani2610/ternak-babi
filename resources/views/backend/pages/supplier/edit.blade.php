@@ -21,7 +21,7 @@
 
     <div class="main-content-inner">
         <div class="row">
-            <form action="{{ route('pakan.update',$pakan->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('supplier.update',$supplier->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-6 mt-5">
                     <div class="card">
@@ -29,27 +29,26 @@
                             <h4 class="header-title text-center">Edit</h4>
                             <hr>
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group col-md-12">
-                                        <label class="mt-2" for="jenis">Nama Pakan</label>
-                                        <input type="text" class="form-control" id="nama_pakan" value="{{ $pakan->nama_pakan }}" name="nama_pakan" required>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="mt-2" for="jenis">Nama Supplier</label>
+                                            <input type="text" class="form-control" id="nama" value="{{ $supplier->nama }}" name="nama" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="mt-2" for="jenis">Nomor Telepon</label>
+                                            <input type="text" class="form-control" id="no_tlp" value="{{ $supplier->no_tlp }}" name="no_tlp" required>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="mt-2" for="jenis">Alamat</label>
+                                            <textarea name="alamat" class="form-control" id="" cols="30" rows="10">{{ $supplier->alamat }} </textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="mt-2" for="jenis">Keterangan</label>
+                                            <textarea name="keterangan" class="form-control" id="" cols="30" rows="10">{{ $supplier->keterangan }} </textarea>
+                                        </div>
+                                        
                                     </div>
-
-                                    <div class="form-group col-md-12">
-                                        <label for="user">Satuan</label>
-                                        @php
-                                            $satuan = [
-                                                'Kg','Gram','lbs','ml','Ons'
-                                            ]
-                                        @endphp
-                                        <select class="form-control" name="satuan" id="satuan">
-                                            <option value="" disabled selected>Pilih Satuan</option>
-                                            @foreach ($satuan as $s)
-                                                <option value="{{ $s }}" {{ $s == $pakan->satuan ? 'selected' : '' }}>{{ $s }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    
                                 </div>
                                
                             </div>

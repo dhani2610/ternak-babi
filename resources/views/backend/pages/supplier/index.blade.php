@@ -28,12 +28,12 @@
             <div class="col-12 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title float-left">Data Inventory Pakan</h4>
-                        {{-- <p class="float-right mb-2">
-                            <a href="{{ route('inventory.create') }}" class="btn btn-primary text-white mb-3" style="float: right">
+                        <h4 class="header-title float-left">Data Supplier</h4>
+                        <p class="float-right mb-2">
+                            <a href="{{ route('supplier.create') }}" class="btn btn-primary text-white mb-3">
                                 Tambah Data
                             </a>
-                        </p> --}}
+                        </p>
                         <div class="clearfix"></div>
                         <div class="table-responsive">
                             @include('backend.layouts.partials.messages')
@@ -41,58 +41,31 @@
                                 <thead class="bg-light text-capitalize">
                                     <tr>
                                         <th>NO</th>
-                                        <th>Pakan</th>
-                                        <th>Stok</th>
-                                        {{-- <th>Min Stok</th> --}}
-                                        {{-- <th>Harga</th> --}}
-                                        <th>Satuan</th>
-                                        <th>Tanggal Dibuat</th>
-                                        <th>Tanggal Update</th>
-                                        {{-- <th>Aksi</th> --}}
+                                        <th>Nama</th>
+                                        <th>Nomor Telepon</th>
+                                        <th>Alamat</th>
+                                        <th>Keterangan</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $index => $item)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            @php
-                                                $pakan = App\Models\Pakan::where('id', $item->id_pakan)->first();
-                                                if ($item->qty_now < $item->min_qty ) {
-                                                    $bg = 'red';
-                                                    $color = 'white';
-                                                }else{
-                                                    $bg = '';
-                                                    $color = 'black';
-                                                }
-                                            @endphp
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->no_tlp ?? '-' }}</td>
+                                            <td>{{ $item->alamat }}</td>
+                                            <td>{{ $item->keterangan }}</td>
                                             <td>
-                                                @if ($pakan != null)
-                                                    {{ $pakan->nama_pakan }}   
-                                                @else
-                                                    -
-                                                @endif
-                                            </td>
-                                            {{-- <td style="background: {{ $bg }};color: {{ $color }}"> --}}
-                                            <td>
-                                                {{ $item->qty_now }} ({{ $pakan->satuan ?? '-' }})
-                                            </td>
-                                            <td>
-                                                ({{ $pakan->satuan ?? '-' }})
-                                            </td>
-                                            {{-- <td>{{ $item->min_qty }} ({{ $pakan->satuan ?? '-' }})</td> --}}
-                                            {{-- <td>@currency($item->price) / {{ $pakan->satuan ?? '-' }}</td> --}}
-                                            <td>{{ $item->created_at }}</td>
-                                            <td>{{ $item->updated_at }}</td>
-                                            {{-- <td>
-                                                <a href="{{ route('inventory.edit', $item->id) }}"
+                                                <a href="{{ route('supplier.edit', $item->id) }}"
                                                     class="btn btn-success text-white">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
-                                                <a onclick="confirmDelete('{{ route('inventory.destroy', $item->id) }}')"
+                                                <a onclick="confirmDelete('{{ route('supplier.destroy', $item->id) }}')"
                                                     class="btn btn-danger text-white">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </a>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

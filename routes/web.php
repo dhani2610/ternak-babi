@@ -35,6 +35,17 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
 
 
+    Route::group(['prefix' => 'supplier'], function () {
+        Route::get('/', 'Backend\SupplierController@index')->name('supplier');
+        Route::get('create', 'Backend\SupplierController@create')->name('supplier.create');
+        Route::post('store', 'Backend\SupplierController@store')->name('supplier.store');
+        Route::get('edit/{id}', 'Backend\SupplierController@edit')->name('supplier.edit');
+        Route::post('update/{id}', 'Backend\SupplierController@update')->name('supplier.update');
+        Route::get('destroy/{id}', 'Backend\SupplierController@destroy')->name('supplier.destroy');
+    });
+
+
+
     Route::group(['prefix' => 'pakan'], function () {
         Route::get('/', 'Backend\PakanController@index')->name('pakan');
         Route::get('create', 'Backend\PakanController@create')->name('pakan.create');

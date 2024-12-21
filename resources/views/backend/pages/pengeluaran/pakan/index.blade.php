@@ -41,6 +41,7 @@
                                 <thead class="bg-light text-capitalize">
                                     <tr>
                                         <th>NO</th>
+                                        <th>Supplier</th>
                                         <th>Title</th>
                                         <th>Pakan</th>
                                         <th>Quantity</th>
@@ -55,11 +56,16 @@
                                     @foreach ($data as $index => $item)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $item->title }}</td>
-
                                             @php
                                                 $pakan = App\Models\Pakan::where('id', $item->id_pakan)->first();
+                                                $supplier = App\Models\Supplier::where('id', $item->id_supplier)->first();
                                             @endphp
+                                            @if ($supplier != null)
+                                                <td>{{ $supplier->nama ?? '-' }}</td>
+                                            @else
+                                                <td>-</td>
+                                            @endif
+                                            <td>{{ $item->title }}</td>
                                             <td>
                                                 @if ($pakan != null)
                                                     {{ $pakan->nama_pakan }}   
