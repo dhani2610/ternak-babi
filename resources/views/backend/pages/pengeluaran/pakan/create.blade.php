@@ -63,6 +63,11 @@
                                         <input type="number" class="form-control" id="price" name="price"
                                             required>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="mt-2" for="total_price">Total Harga (Rp.)</label>
+                                        <input type="text" class="form-control" id="total_price" name="total_price" readonly>
+                                    </div>
+                                    
                                     
                                 </div>
                                 <div class="col-lg-6">
@@ -92,6 +97,32 @@
     <script>
         // Initialize Dropify
         $('.dropify').dropify();
+        document.addEventListener('DOMContentLoaded', function () {
+                const qtyInput = document.getElementById('qty');
+                const priceInput = document.getElementById('price');
+                const totalPriceInput = document.getElementById('total_price');
+
+                function formatRupiah(number) {
+                    return new Intl.NumberFormat('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                        minimumFractionDigits: 0
+                    }).format(number);
+                }
+
+                function calculateTotal() {
+                    const qty = parseFloat(qtyInput.value) || 0;
+                    const price = parseFloat(priceInput.value) || 0;
+                    const total = qty * price;
+                    totalPriceInput.value = formatRupiah(total);
+                }
+
+                qtyInput.addEventListener('input', calculateTotal);
+                priceInput.addEventListener('input', calculateTotal);
+            });
+
+
 
     </script>
+    
 @endsection

@@ -23,9 +23,26 @@
     @endphp
 
     <div class="main-content-inner">
+        <div class="row mt-4">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="card" style="background: green">
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="d-flex flex-column h-100">
+                        <h2 class="font-weight-bolder" style="color: white">Total Mix Pakan</h2>
+                        <h2 class="font-weight-bolder" style="color: white">{{$count. ' Kg'}}</h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+          
         <div class="row">
             <!-- data table start -->
-            <div class="col-12 mt-5">
+            <div class="col-12 mt-3">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="header-title float-left">Data Mix Pakan</h4>
@@ -43,7 +60,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>Title</th>
-                                        {{-- <th>Total Harga</th> --}}
+                                        <th>Total (Kg)</th>
                                         <th>Tanggal Dibuat</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -53,6 +70,13 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $item->title }}</td>
+                                            @php
+                                                $pakanv = App\Models\MixPakanDetail::where(
+                                                    'id_mix',
+                                                    $item->id,
+                                                )->get();
+                                            @endphp
+                                            <td>{{ $pakanv->count().' Kg' }}</td>
                                             {{-- <th>@currency($item->total_harga)</th> --}}
                                             <td>{{ $item->created_at }}</td>
                                             <td>
@@ -74,12 +98,7 @@
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                @php
-                                                                    $pakanv = App\Models\MixPakanDetail::where(
-                                                                        'id_mix',
-                                                                        $item->id,
-                                                                    )->get();
-                                                                @endphp
+                                                              
 
                                                                 <div class="table-responsive">
                                                                     <table class="table table-bordered" id="pakan-table">

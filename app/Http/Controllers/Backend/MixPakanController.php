@@ -29,6 +29,7 @@ class MixPakanController extends Controller
     {
         $data['page_title'] = 'Pakan';
         $data['data'] = MixPakan::orderBy('created_at', 'desc')->get();
+        $data['count'] = MixPakanDetail::orderBy('created_at', 'desc')->get()->count();
 
         return view('backend.pages.mix-pakan.index', $data);
     }

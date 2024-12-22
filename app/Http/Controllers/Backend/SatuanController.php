@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Pakan;
-use App\Http\Controllers\Controller;
 use App\Models\Satuan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PakanController extends Controller
+class satuanController extends Controller
 {
     public $user;
 
@@ -24,10 +23,10 @@ class PakanController extends Controller
      */
     public function index(Request $request)
     {
-        $data['page_title'] = 'Pakan';
-        $data['data'] = Pakan::orderBy('created_at', 'desc')->get();
+        $data['page_title'] = 'Satuan';
+        $data['data'] = Satuan::orderBy('created_at', 'desc')->get();
 
-        return view('backend.pages.pakan.index', $data);
+        return view('backend.pages.satuan.index', $data);
     }
 
     /**
@@ -35,10 +34,8 @@ class PakanController extends Controller
      */
     public function create()
     {
-        $data['page_title'] = 'Tambah Pakan';
-        $data['satuan'] = Satuan::orderBy('created_at', 'desc')->get();
-
-        return view('backend.pages.pakan.create', $data);
+        $data['page_title'] = 'Tambah Satuan';
+        return view('backend.pages.satuan.create', $data);
     }
 
     /**
@@ -47,24 +44,23 @@ class PakanController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = new Pakan();
-            $data->nama_pakan = $request->nama_pakan;
-            $data->satuan = $request->satuan;
+            $data = new Satuan();
+            $data->nama = $request->nama;
             $data->save();
 
             session()->flash('success', 'Data Berhasil Disimpan!');
-            return redirect()->route('pakan');
+            return redirect()->route('satuan');
         } catch (\Throwable $th) {
 
             session()->flash('failed', $th->getMessage());
-            return redirect()->route('pakan');
+            return redirect()->route('satuan');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pakan $pakan)
+    public function show(satuan $satuan)
     {
         //
     }
@@ -74,11 +70,10 @@ class PakanController extends Controller
      */
     public function edit($id)
     {
-        $data['page_title'] = 'Pakan';
-        $data['pakan'] = Pakan::find($id);
-        $data['satuan'] = Satuan::orderBy('created_at', 'desc')->get();
+        $data['page_title'] = 'Satuan';
+        $data['satuan'] = Satuan::find($id);
 
-        return view('backend.pages.pakan.edit', $data);
+        return view('backend.pages.satuan.edit', $data);
     }
 
     /**
@@ -87,16 +82,15 @@ class PakanController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $data = Pakan::find($id);
-            $data->nama_pakan = $request->nama_pakan;
-            $data->satuan = $request->satuan;
+            $data = Satuan::find($id);
+            $data->nama = $request->nama;
             $data->save();
 
             session()->flash('success', 'Data Berhasil Disimpan!');
-            return redirect()->route('pakan');
+            return redirect()->route('satuan');
         } catch (\Throwable $th) {
             session()->flash('failed', $th->getMessage());
-            return redirect()->route('pakan');
+            return redirect()->route('satuan');
         }
     }
 
@@ -106,14 +100,14 @@ class PakanController extends Controller
     public function destroy($id)
     {
         try {
-            $data = Pakan::find($id);
+            $data = Satuan::find($id);
             $data->delete();
 
             session()->flash('success', 'Data Berhasil Dihapus!');
-            return redirect()->route('pakan');
+            return redirect()->route('satuan');
         } catch (\Throwable $th) {
             session()->flash('failed', $th->getMessage());
-            return redirect()->route('pakan');
+            return redirect()->route('satuan');
         }
     }
 }

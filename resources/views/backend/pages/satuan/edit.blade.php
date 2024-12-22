@@ -21,7 +21,7 @@
 
     <div class="main-content-inner">
         <div class="row">
-            <form action="{{ route('pakan.update',$pakan->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('satuan.update',$satuan->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-6 mt-5">
                     <div class="card">
@@ -31,22 +31,10 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group col-md-12">
-                                        <label class="mt-2" for="jenis">Nama Pakan</label>
-                                        <input type="text" class="form-control" id="nama_pakan" value="{{ $pakan->nama_pakan }}" name="nama_pakan" required>
+                                        <label class="mt-2" for="jenis">Satuan</label>
+                                        <input type="text" class="form-control" id="nama" value="{{ $satuan->nama }}" name="nama" required>
                                     </div>
-
-                                    <div class="form-group col-md-12">
-                                        <label for="user">Satuan</label>
-                                        <select class="form-control" name="satuan" id="satuan">
-                                            <option value="" disabled selected>Pilih Satuan</option>
-                                            @foreach ($satuan as $s)
-                                                <option value="{{ $s->nama }}" {{ $s->nama == $pakan->satuan ? 'selected' : '' }}>{{ $s->nama }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    
                                 </div>
-                               
                             </div>
                            
                             <button class="btn btn-primary mt-4" type="submit" style="float: right">Simpan Data</button>

@@ -56,7 +56,6 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
 
-
     Route::group(['prefix' => 'inventory'], function () {
         Route::get('/', 'Backend\InventoryController@index')->name('inventory');
         Route::get('create', 'Backend\InventoryController@create')->name('inventory.create');
@@ -82,6 +81,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('edit/{id}', 'Backend\MixPakanController@edit')->name('mix-pakan.edit');
         Route::post('update/{id}', 'Backend\MixPakanController@update')->name('mix-pakan.update');
         Route::get('destroy/{id}', 'Backend\MixPakanController@destroy')->name('mix-pakan.destroy');
+    });
+
+
+    
+    Route::group(['prefix' => 'satuan'], function () {
+        Route::get('/', 'Backend\SatuanController@index')->name('satuan');
+        Route::get('create', 'Backend\SatuanController@create')->name('satuan.create');
+        Route::post('store', 'Backend\SatuanController@store')->name('satuan.store');
+        Route::get('edit/{id}', 'Backend\SatuanController@edit')->name('satuan.edit');
+        Route::post('update/{id}', 'Backend\SatuanController@update')->name('satuan.update');
+        Route::get('destroy/{id}', 'Backend\SatuanController@destroy')->name('satuan.destroy');
     });
 
 

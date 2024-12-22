@@ -52,6 +52,7 @@
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
+     
 
         <li class="menu-item {{ Request::routeIs('admin/pengeluaran-pakan') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -94,13 +95,20 @@
                             style="color : {{ Request::routeIs('admin/pakan') ? '#3da601' : '' }}">Pakan
                         </div>
                     </a>
-                    <a href="{{ route('supplier') }}" class="menu-link">
-                        <div data-i18n="Without menu"
-                            style="color : {{ Request::routeIs('admin/supplier') ? '#3da601' : '' }}">Supplier
-                        </div>
-                    </a>
                 </li>
             </ul>
+        </li>
+        <li class="menu-item mb-2">
+            <a href="{{ route('supplier') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa-boxes-packing"></i>
+                <div data-i18n="Dashboard">Supplier</div>
+            </a>
+        </li>
+        <li class="menu-item mb-2">
+            <a href="{{ route('satuan') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa-regular fa-rectangle-list"></i>
+                <div data-i18n="Dashboard">Satuan</div>
+            </a>
         </li>
         <li class="menu-item {{ Request::routeIs('admin/admins') || Request::routeIs('admin/roles') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
