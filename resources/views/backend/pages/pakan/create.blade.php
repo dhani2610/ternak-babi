@@ -33,9 +33,10 @@
                                     <div class="form-group col-md-12">
                                         <label class="mt-2" for="jenis">Nama Pakan</label>
                                         <input type="text" class="form-control" id="nama_pakan" name="nama_pakan" required>
+
                                     </div>
 
-                                    <div class="form-group col-md-12">
+                                    {{-- <div class="form-group col-md-12">
                                         <label for="user">Satuan</label>
                                         <select class="form-control" name="satuan" id="satuan">
                                             <option value="" disabled selected>Pilih Satuan</option>
@@ -43,7 +44,7 @@
                                                 <option value="{{ $s->nama }}">{{ $s->nama }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     
                                 </div>
                                

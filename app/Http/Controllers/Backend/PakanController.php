@@ -49,7 +49,7 @@ class PakanController extends Controller
         try {
             $data = new Pakan();
             $data->nama_pakan = $request->nama_pakan;
-            $data->satuan = $request->satuan;
+            $data->satuan = 'Kg';
             $data->save();
 
             session()->flash('success', 'Data Berhasil Disimpan!');
@@ -89,7 +89,7 @@ class PakanController extends Controller
         try {
             $data = Pakan::find($id);
             $data->nama_pakan = $request->nama_pakan;
-            $data->satuan = $request->satuan;
+            $data->satuan = 'Kg';
             $data->save();
 
             session()->flash('success', 'Data Berhasil Disimpan!');
