@@ -76,7 +76,7 @@
                                                     $item->id,
                                                 )->get();
                                             @endphp
-                                            <td>{{ $pakanv->count().' Kg' }}</td>
+                                            <td>{{ $pakanv->sum('qty').' Kg' }}</td>
                                             {{-- <th>@currency($item->total_harga)</th> --}}
                                             <td>{{ $item->created_at }}</td>
                                             <td>
