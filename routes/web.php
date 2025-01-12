@@ -55,14 +55,23 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('destroy/{id}', 'Backend\PakanController@destroy')->name('pakan.destroy');
     });
 
+    Route::group(['prefix' => 'vaksin'], function () {
+        Route::get('/', 'Backend\VaksinController@index')->name('vaksin');
+        Route::get('create', 'Backend\VaksinController@create')->name('vaksin.create');
+        Route::post('store', 'Backend\VaksinController@store')->name('vaksin.store');
+        Route::get('edit/{id}', 'Backend\VaksinController@edit')->name('vaksin.edit');
+        Route::post('update/{id}', 'Backend\VaksinController@update')->name('vaksin.update');
+        Route::get('destroy/{id}', 'Backend\VaksinController@destroy')->name('vaksin.destroy');
+    });
+
 
     Route::group(['prefix' => 'inventory'], function () {
         Route::get('/', 'Backend\InventoryController@index')->name('inventory');
-        Route::get('create', 'Backend\InventoryController@create')->name('inventory.create');
-        Route::post('store', 'Backend\InventoryController@store')->name('inventory.store');
-        Route::get('edit/{id}', 'Backend\InventoryController@edit')->name('inventory.edit');
-        Route::post('update/{id}', 'Backend\InventoryController@update')->name('inventory.update');
-        Route::get('destroy/{id}', 'Backend\InventoryController@destroy')->name('inventory.destroy');
+    });
+
+    
+    Route::group(['prefix' => 'inventory-vaksin'], function () {
+        Route::get('/', 'Backend\InventoryVaksinController@index')->name('inventory-vaksin');
     });
 
     Route::group(['prefix' => 'pengeluaran-pakan'], function () {
@@ -72,6 +81,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('edit/{id}', 'Backend\PengeluaranPakanController@edit')->name('pengeluaran-pakan.edit');
         Route::post('update/{id}', 'Backend\PengeluaranPakanController@update')->name('pengeluaran-pakan.update');
         Route::get('destroy/{id}', 'Backend\PengeluaranPakanController@destroy')->name('pengeluaran-pakan.destroy');
+    });
+
+    Route::group(['prefix' => 'pengeluaran-vaksin'], function () {
+        Route::get('/', 'Backend\PengeluaranVaksinController@index')->name('pengeluaran-vaksin');
+        Route::get('create', 'Backend\PengeluaranVaksinController@create')->name('pengeluaran-vaksin.create');
+        Route::post('store', 'Backend\PengeluaranVaksinController@store')->name('pengeluaran-vaksin.store');
+        Route::get('edit/{id}', 'Backend\PengeluaranVaksinController@edit')->name('pengeluaran-vaksin.edit');
+        Route::post('update/{id}', 'Backend\PengeluaranVaksinController@update')->name('pengeluaran-vaksin.update');
+        Route::get('destroy/{id}', 'Backend\PengeluaranVaksinController@destroy')->name('pengeluaran-vaksin.destroy');
     });
 
     Route::group(['prefix' => 'mix-pakan'], function () {

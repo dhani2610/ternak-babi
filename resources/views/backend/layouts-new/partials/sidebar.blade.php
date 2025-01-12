@@ -62,10 +62,17 @@
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::routeIs('admin/pengeluaran-pakan') ? 'active' : '' }}">
+                <li class="menu-item {{ Request::routeIs('admin/pengeluaran-pakan') || Request::routeIs('admin/pengeluaran-vaksin') ? 'active' : '' }}">
                     <a href="{{ route('pengeluaran-pakan') }}" class="menu-link">
                         <div data-i18n="Without menu"
                             style="color : {{ Request::routeIs('admin/pengeluaran-pakan') ? '#3da601' : '' }}">Pakan
+                        </div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::routeIs('admin/pengeluaran-vaksin') ? 'active' : '' }}">
+                    <a href="{{ route('pengeluaran-vaksin') }}" class="menu-link">
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('admin/pengeluaran-vaksin') ? '#3da601' : '' }}">Vaksin
                         </div>
                     </a>
                 </li>
@@ -93,6 +100,27 @@
                     <a href="{{ route('pakan') }}" class="menu-link">
                         <div data-i18n="Without menu"
                             style="color : {{ Request::routeIs('admin/pakan') ? '#3da601' : '' }}">Pakan
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ Request::routeIs('admin/pakan') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons fa-solid fa-cheese"></i>
+                <div data-i18n="Layouts">Management Vaksin</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin/vaksin') || Request::routeIs('admin/inventory-vaksin') ? 'active' : '' }}">
+                    <a href="{{ route('inventory-vaksin') }}" class="menu-link">
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('admin/inventory-vaksin') ? '#3da601' : '' }}">Inventory
+                        </div>
+                    </a>
+                    <a href="{{ route('vaksin') }}" class="menu-link" style="background: {{ Request::routeIs('vaksin') ? 'white' : '' }}" >
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('vaksin') ? '#3da601' : '' }}">Vaksin
                         </div>
                     </a>
                 </li>
