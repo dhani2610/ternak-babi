@@ -45,7 +45,7 @@
                                             required>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="user">Pakan</label>
+                                        <label for="user">Vaksin</label>
                                         <select class="form-control" name="id_vaksin" id="id_vaksin">
                                             <option value="" disabled selected>Pilih Vaksin</option>
                                             @foreach ($vaksin as $item)
