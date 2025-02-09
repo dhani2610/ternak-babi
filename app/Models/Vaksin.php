@@ -18,10 +18,15 @@ class Vaksin extends Model
     {
         return $this->hasMany(PengeluaranVaksin::class, 'id_vaksin');
     }
-
+   
     public function inventoryVaksin()
     {
         return $this->hasMany(InventoryVaksin::class, 'id_vaksin');
+    }
+
+    public function penggunaanvaksin()
+    {
+        return $this->hasMany(PenggunaanVaksin::class, 'id_vaksin');
     }
 
 }

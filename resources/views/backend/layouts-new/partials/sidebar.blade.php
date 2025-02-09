@@ -81,6 +81,28 @@
 
         <li class="menu-item {{ Request::routeIs('admin/pakan') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons fa-solid fa-book"></i>
+                <div data-i18n="Layouts">Management Ternak</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin/ternak') || Request::routeIs('admin/kandang') ? 'active' : '' }}">
+                    <a href="{{ route('ternak') }}" class="menu-link" style="background: {{ Request::routeIs('ternak') ? 'white' : '' }}" >
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('ternak') ? '#3da601' : '' }}">Data Ternak
+                        </div>
+                    </a>
+                    <a href="{{ route('kandang') }}" class="menu-link" style="background: {{ Request::routeIs('kandang') ? 'white' : '' }}" >
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('kandang') ? '#3da601' : '' }}">Kandang
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item {{ Request::routeIs('admin/pakan') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons fa-solid fa-cheese"></i>
                 <div data-i18n="Layouts">Management Pakan</div>
             </a>
@@ -107,7 +129,7 @@
         </li>
         <li class="menu-item {{ Request::routeIs('admin/pakan') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons fa-solid fa-cheese"></i>
+                <i class="menu-icon tf-icons fa-solid fa-notes-medical"></i>
                 <div data-i18n="Layouts">Management Vaksin</div>
             </a>
 
@@ -121,6 +143,11 @@
                     <a href="{{ route('vaksin') }}" class="menu-link" style="background: {{ Request::routeIs('vaksin') ? 'white' : '' }}" >
                         <div data-i18n="Without menu"
                             style="color : {{ Request::routeIs('vaksin') ? '#3da601' : '' }}">Vaksin
+                        </div>
+                    </a>
+                    <a href="{{ route('penggunaan-vaksin') }}" class="menu-link" style="background: {{ Request::routeIs('penggunaan-vaksin') ? 'white' : '' }}" >
+                        <div data-i18n="Without menu"
+                            style="color : {{ Request::routeIs('penggunaan-vaksin') ? '#3da601' : '' }}">Penggunaan
                         </div>
                     </a>
                 </li>

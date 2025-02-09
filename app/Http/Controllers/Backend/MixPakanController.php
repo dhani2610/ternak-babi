@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Inventory;
 use App\Models\MixPakanDetail;
 use App\Models\Pakan;
+use App\Models\PenggunaanPakan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,9 +30,15 @@ class MixPakanController extends Controller
     {
         $data['page_title'] = 'Pakan';
         $data['data'] = MixPakan::orderBy('created_at', 'desc')->get();
-        $data['count'] = MixPakanDetail::orderBy('created_at', 'desc')->get()->sum('qty');
+        $data['count'] = $this->sisaPakan();
 
         return view('backend.pages.mix-pakan.index', $data);
+    }
+
+    public function sisaPakan(){
+        $pakan = MixPakanDetail::orderBy('created_at', 'desc')->get()->sum('qty');
+        $use = PenggunaanPakan::get()->sum('qty');
+        return $pakan > 0 ? $pakan - $use : 0; 
     }
 
     /**

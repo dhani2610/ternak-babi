@@ -92,6 +92,16 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('destroy/{id}', 'Backend\PengeluaranVaksinController@destroy')->name('pengeluaran-vaksin.destroy');
     });
 
+    Route::group(['prefix' => 'penggunaan-vaksin'], function () {
+        Route::get('/', 'Backend\PenggunaanVaksinController@index')->name('penggunaan-vaksin');
+        Route::get('create', 'Backend\PenggunaanVaksinController@create')->name('penggunaan-vaksin.create');
+        Route::post('store', 'Backend\PenggunaanVaksinController@store')->name('penggunaan-vaksin.store');
+        Route::get('edit/{id}', 'Backend\PenggunaanVaksinController@edit')->name('penggunaan-vaksin.edit');
+        Route::post('update/{id}', 'Backend\PenggunaanVaksinController@update')->name('penggunaan-vaksin.update');
+        Route::get('destroy/{id}', 'Backend\PenggunaanVaksinController@destroy')->name('penggunaan-vaksin.destroy');
+    });
+
+
     Route::group(['prefix' => 'mix-pakan'], function () {
         Route::get('/', 'Backend\MixPakanController@index')->name('mix-pakan');
         Route::get('create', 'Backend\MixPakanController@create')->name('mix-pakan.create');
@@ -101,8 +111,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('destroy/{id}', 'Backend\MixPakanController@destroy')->name('mix-pakan.destroy');
     });
 
-
-    
     Route::group(['prefix' => 'satuan'], function () {
         Route::get('/', 'Backend\SatuanController@index')->name('satuan');
         Route::get('create', 'Backend\SatuanController@create')->name('satuan.create');
@@ -110,6 +118,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('edit/{id}', 'Backend\SatuanController@edit')->name('satuan.edit');
         Route::post('update/{id}', 'Backend\SatuanController@update')->name('satuan.update');
         Route::get('destroy/{id}', 'Backend\SatuanController@destroy')->name('satuan.destroy');
+    });
+
+    Route::group(['prefix' => 'kandang'], function () {
+        Route::get('/', 'Backend\KandangController@index')->name('kandang');
+        Route::get('create', 'Backend\KandangController@create')->name('kandang.create');
+        Route::post('store', 'Backend\KandangController@store')->name('kandang.store');
+        Route::get('edit/{id}', 'Backend\KandangController@edit')->name('kandang.edit');
+        Route::post('update/{id}', 'Backend\KandangController@update')->name('kandang.update');
+        Route::get('destroy/{id}', 'Backend\KandangController@destroy')->name('kandang.destroy');
+    });
+
+    Route::group(['prefix' => 'ternak'], function () {
+        Route::get('/', 'Backend\TernakController@index')->name('ternak');
+        Route::get('pakan/{id}', 'Backend\TernakController@pakan')->name('ternak.pakan');
+        Route::post('simpan-pakan/{id}', 'Backend\TernakController@storePakan')->name('ternak.pakan.store');
+        Route::get('create', 'Backend\TernakController@create')->name('ternak.create');
+        Route::post('store', 'Backend\TernakController@store')->name('ternak.store');
+        Route::get('edit/{id}', 'Backend\TernakController@edit')->name('ternak.edit');
+        Route::post('update/{id}', 'Backend\TernakController@update')->name('ternak.update');
+        Route::get('destroy/{id}', 'Backend\TernakController@destroy')->name('ternak.destroy');
     });
 
 
